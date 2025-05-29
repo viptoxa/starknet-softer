@@ -1,0 +1,10 @@
+{
+    "ETH": "https://rpc.ankr.com/eth",
+    "Arbitrum": "https://arb-mainnet-public.unifra.io",
+    "Optimism": "https://optimism-mainnet.public.blastapi.io",
+    "Starknet": "https://starknet-mainnet.public.blastapi.io",
+    "Goerli": "https://eth-goerli.public.blastapi.io",
+    "ArbitrumTestnet": "https://arbitrum-goerli.public.blastapi.io",
+    "OptimismTestnet": "https://optimism-goerli.public.blastapi.io",
+    "StarknetTestnet": "https://starknet-testnet.public.blastapi.io"
+}

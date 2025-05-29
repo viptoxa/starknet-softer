@@ -1,0 +1,24 @@
+[
+  {
+    "data": [
+      {
+        "name": "id",
+        "type": "felt"
+      }
+    ],
+    "keys": [],
+    "name": "watch_ls_id",
+    "type": "event"
+  },
+  {
+    "name": "watch",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "_Id",
+        "type": "felt"
+      }
+    ],
+    "outputs": []
+  }
+]

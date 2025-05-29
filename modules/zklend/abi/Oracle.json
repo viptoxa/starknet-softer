@@ -1,0 +1,949 @@
+[
+  {
+    "name": "GenericEntry",
+    "size": 5,
+    "type": "struct",
+    "members": [
+      {
+        "name": "base",
+        "type": "BaseEntry",
+        "offset": 0
+      },
+      {
+        "name": "key",
+        "type": "felt",
+        "offset": 3
+      },
+      {
+        "name": "value",
+        "type": "felt",
+        "offset": 4
+      }
+    ]
+  },
+  {
+    "name": "BaseEntry",
+    "size": 3,
+    "type": "struct",
+    "members": [
+      {
+        "name": "timestamp",
+        "type": "felt",
+        "offset": 0
+      },
+      {
+        "name": "source",
+        "type": "felt",
+        "offset": 1
+      },
+      {
+        "name": "publisher",
+        "type": "felt",
+        "offset": 2
+      }
+    ]
+  },
+  {
+    "name": "SpotEntry",
+    "size": 6,
+    "type": "struct",
+    "members": [
+      {
+        "name": "base",
+        "type": "BaseEntry",
+        "offset": 0
+      },
+      {
+        "name": "pair_id",
+        "type": "felt",
+        "offset": 3
+      },
+      {
+        "name": "price",
+        "type": "felt",
+        "offset": 4
+      },
+      {
+        "name": "volume",
+        "type": "felt",
+        "offset": 5
+      }
+    ]
+  },
+  {
+    "name": "FutureEntry",
+    "size": 6,
+    "type": "struct",
+    "members": [
+      {
+        "name": "base",
+        "type": "BaseEntry",
+        "offset": 0
+      },
+      {
+        "name": "pair_id",
+        "type": "felt",
+        "offset": 3
+      },
+      {
+        "name": "price",
+        "type": "felt",
+        "offset": 4
+      },
+      {
+        "name": "expiry_timestamp",
+        "type": "felt",
+        "offset": 5
+      }
+    ]
+  },
+  {
+    "name": "Currency",
+    "size": 5,
+    "type": "struct",
+    "members": [
+      {
+        "name": "id",
+        "type": "felt",
+        "offset": 0
+      },
+      {
+        "name": "decimals",
+        "type": "felt",
+        "offset": 1
+      },
+      {
+        "name": "is_abstract_currency",
+        "type": "felt",
+        "offset": 2
+      },
+      {
+        "name": "starknet_address",
+        "type": "felt",
+        "offset": 3
+      },
+      {
+        "name": "ethereum_address",
+        "type": "felt",
+        "offset": 4
+      }
+    ]
+  },
+  {
+    "name": "Pair",
+    "size": 3,
+    "type": "struct",
+    "members": [
+      {
+        "name": "id",
+        "type": "felt",
+        "offset": 0
+      },
+      {
+        "name": "quote_currency_id",
+        "type": "felt",
+        "offset": 1
+      },
+      {
+        "name": "base_currency_id",
+        "type": "felt",
+        "offset": 2
+      }
+    ]
+  },
+  {
+    "name": "Checkpoint",
+    "size": 4,
+    "type": "struct",
+    "members": [
+      {
+        "name": "timestamp",
+        "type": "felt",
+        "offset": 0
+      },
+      {
+        "name": "value",
+        "type": "felt",
+        "offset": 1
+      },
+      {
+        "name": "aggregation_mode",
+        "type": "felt",
+        "offset": 2
+      },
+      {
+        "name": "num_sources_aggregated",
+        "type": "felt",
+        "offset": 3
+      }
+    ]
+  },
+  {
+    "data": [
+      {
+        "name": "old_publisher_registry_address",
+        "type": "felt"
+      },
+      {
+        "name": "new_publisher_registry_address",
+        "type": "felt"
+      }
+    ],
+    "keys": [],
+    "name": "UpdatedPublisherRegistryAddress",
+    "type": "event"
+  },
+  {
+    "data": [
+      {
+        "name": "new_entry",
+        "type": "GenericEntry"
+      }
+    ],
+    "keys": [],
+    "name": "SubmittedEntry",
+    "type": "event"
+  },
+  {
+    "data": [
+      {
+        "name": "new_entry",
+        "type": "SpotEntry"
+      }
+    ],
+    "keys": [],
+    "name": "SubmittedSpotEntry",
+    "type": "event"
+  },
+  {
+    "data": [
+      {
+        "name": "new_entry",
+        "type": "FutureEntry"
+      }
+    ],
+    "keys": [],
+    "name": "SubmittedFutureEntry",
+    "type": "event"
+  },
+  {
+    "data": [
+      {
+        "name": "currency",
+        "type": "Currency"
+      }
+    ],
+    "keys": [],
+    "name": "SubmittedCurrency",
+    "type": "event"
+  },
+  {
+    "data": [
+      {
+        "name": "currency",
+        "type": "Currency"
+      }
+    ],
+    "keys": [],
+    "name": "UpdatedCurrency",
+    "type": "event"
+  },
+  {
+    "data": [
+      {
+        "name": "pair",
+        "type": "Pair"
+      }
+    ],
+    "keys": [],
+    "name": "SubmittedPair",
+    "type": "event"
+  },
+  {
+    "data": [
+      {
+        "name": "pair_id",
+        "type": "felt"
+      }
+    ],
+    "keys": [],
+    "name": "CheckpointSpotEntry",
+    "type": "event"
+  },
+  {
+    "data": [
+      {
+        "name": "implementation",
+        "type": "felt"
+      }
+    ],
+    "keys": [],
+    "name": "Upgraded",
+    "type": "event"
+  },
+  {
+    "data": [
+      {
+        "name": "previousAdminAddress",
+        "type": "felt"
+      },
+      {
+        "name": "newAdminAddress",
+        "type": "felt"
+      }
+    ],
+    "keys": [],
+    "name": "AdminAddressChanged",
+    "type": "event"
+  },
+  {
+    "name": "initializer",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "proxy_admin",
+        "type": "felt"
+      },
+      {
+        "name": "publisher_registry_address",
+        "type": "felt"
+      },
+      {
+        "name": "currencies_len",
+        "type": "felt"
+      },
+      {
+        "name": "currencies",
+        "type": "Currency*"
+      },
+      {
+        "name": "pairs_len",
+        "type": "felt"
+      },
+      {
+        "name": "pairs",
+        "type": "Pair*"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "name": "get_spot_entries_for_sources",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "pair_id",
+        "type": "felt"
+      },
+      {
+        "name": "sources_len",
+        "type": "felt"
+      },
+      {
+        "name": "sources",
+        "type": "felt*"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "entries_len",
+        "type": "felt"
+      },
+      {
+        "name": "entries",
+        "type": "SpotEntry*"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "get_spot_entries",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "pair_id",
+        "type": "felt"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "entries_len",
+        "type": "felt"
+      },
+      {
+        "name": "entries",
+        "type": "SpotEntry*"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "get_spot_entry",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "pair_id",
+        "type": "felt"
+      },
+      {
+        "name": "source",
+        "type": "felt"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "entry",
+        "type": "SpotEntry"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "get_future_entry",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "pair_id",
+        "type": "felt"
+      },
+      {
+        "name": "expiry_timestamp",
+        "type": "felt"
+      },
+      {
+        "name": "source",
+        "type": "felt"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "entry",
+        "type": "FutureEntry"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "get_spot_median",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "pair_id",
+        "type": "felt"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "price",
+        "type": "felt"
+      },
+      {
+        "name": "decimals",
+        "type": "felt"
+      },
+      {
+        "name": "last_updated_timestamp",
+        "type": "felt"
+      },
+      {
+        "name": "num_sources_aggregated",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "get_spot_median_for_sources",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "pair_id",
+        "type": "felt"
+      },
+      {
+        "name": "sources_len",
+        "type": "felt"
+      },
+      {
+        "name": "sources",
+        "type": "felt*"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "price",
+        "type": "felt"
+      },
+      {
+        "name": "decimals",
+        "type": "felt"
+      },
+      {
+        "name": "last_updated_timestamp",
+        "type": "felt"
+      },
+      {
+        "name": "num_sources_aggregated",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "get_spot",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "pair_id",
+        "type": "felt"
+      },
+      {
+        "name": "aggregation_mode",
+        "type": "felt"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "price",
+        "type": "felt"
+      },
+      {
+        "name": "decimals",
+        "type": "felt"
+      },
+      {
+        "name": "last_updated_timestamp",
+        "type": "felt"
+      },
+      {
+        "name": "num_sources_aggregated",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "get_spot_for_sources",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "pair_id",
+        "type": "felt"
+      },
+      {
+        "name": "aggregation_mode",
+        "type": "felt"
+      },
+      {
+        "name": "sources_len",
+        "type": "felt"
+      },
+      {
+        "name": "sources",
+        "type": "felt*"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "price",
+        "type": "felt"
+      },
+      {
+        "name": "decimals",
+        "type": "felt"
+      },
+      {
+        "name": "last_updated_timestamp",
+        "type": "felt"
+      },
+      {
+        "name": "num_sources_aggregated",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "get_publisher_registry_address",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "publisher_registry_address",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "get_spot_decimals",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "pair_id",
+        "type": "felt"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "decimals",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "get_value",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "key",
+        "type": "felt"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "value",
+        "type": "felt"
+      },
+      {
+        "name": "decimals",
+        "type": "felt"
+      },
+      {
+        "name": "last_updated_timestamp",
+        "type": "felt"
+      },
+      {
+        "name": "num_sources_aggregated",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "get_spot_with_USD_hop",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "base_currency_id",
+        "type": "felt"
+      },
+      {
+        "name": "quote_currency_id",
+        "type": "felt"
+      },
+      {
+        "name": "aggregation_mode",
+        "type": "felt"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "price",
+        "type": "felt"
+      },
+      {
+        "name": "decimals",
+        "type": "felt"
+      },
+      {
+        "name": "last_updated_timestamp",
+        "type": "felt"
+      },
+      {
+        "name": "num_sources_aggregated",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "publish_future_entry",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "new_entry",
+        "type": "FutureEntry"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "name": "publish_spot_entry",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "new_entry",
+        "type": "SpotEntry"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "name": "publish_entry",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "new_entry",
+        "type": "GenericEntry"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "name": "publish_entries",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "new_entries_len",
+        "type": "felt"
+      },
+      {
+        "name": "new_entries",
+        "type": "GenericEntry*"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "name": "publish_future_entries",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "new_entries_len",
+        "type": "felt"
+      },
+      {
+        "name": "new_entries",
+        "type": "FutureEntry*"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "name": "publish_spot_entries",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "new_entries_len",
+        "type": "felt"
+      },
+      {
+        "name": "new_entries",
+        "type": "SpotEntry*"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "name": "update_publisher_registry_address",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "publisher_registry_address",
+        "type": "felt"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "name": "add_currency",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "currency",
+        "type": "Currency"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "name": "update_currency",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "currency",
+        "type": "Currency"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "name": "add_pair",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "pair",
+        "type": "Pair"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "name": "get_latest_checkpoint_index",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "key",
+        "type": "felt"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "latest",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "get_checkpoint",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "key",
+        "type": "felt"
+      },
+      {
+        "name": "index",
+        "type": "felt"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "checkpoint",
+        "type": "Checkpoint"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "get_sources_threshold",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "threshold",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "upgrade",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "new_implementation",
+        "type": "felt"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "name": "set_admin_address",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "new_admin_address",
+        "type": "felt"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "name": "get_implementation_hash",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "address",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "get_admin_address",
+    "type": "function",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "admin_address",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "set_checkpoint",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "pair_id",
+        "type": "felt"
+      },
+      {
+        "name": "aggregation_mode",
+        "type": "felt"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "name": "set_checkpoints",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "pair_ids_len",
+        "type": "felt"
+      },
+      {
+        "name": "pair_ids",
+        "type": "felt*"
+      },
+      {
+        "name": "aggregation_mode",
+        "type": "felt"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "name": "get_last_spot_checkpoint_before",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "pair_id",
+        "type": "felt"
+      },
+      {
+        "name": "timestamp",
+        "type": "felt"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "checkpoint",
+        "type": "Checkpoint"
+      },
+      {
+        "name": "idx",
+        "type": "felt"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "name": "set_sources_threshold",
+    "type": "function",
+    "inputs": [
+      {
+        "name": "threshold",
+        "type": "felt"
+      }
+    ],
+    "outputs": []
+  }
+]
